@@ -1,5 +1,5 @@
-PROJECT_NAME     := blinky_pca10100e
-TARGETS          := nrf52820_xxaa
+PROJECT_NAME     := blinky_pca10100
+TARGETS          := nrf52833_xxaa
 OUTPUT_DIRECTORY := _build
 
 SDK_ROOT := ../../../../nrf_sdk/nRF5_SDK_17.1.0_ddde560
@@ -7,12 +7,13 @@ SDK_ROOT := ../../../../nrf_sdk/nRF5_SDK_17.1.0_ddde560
 PROJ_DIR := ../
 #../../..
 
-$(OUTPUT_DIRECTORY)/nrf52820_xxaa.out: \
+-include ../../../../setup.mk
+$(OUTPUT_DIRECTORY)/nrf52833_xxaa.out: \
   LINKER_SCRIPT  := blinky_gcc_nrf52.ld
 
 # Source files common to all targets
 SRC_FILES += \
-  $(SDK_ROOT)/modules/nrfx/mdk/gcc_startup_nrf52820.S \
+  $(SDK_ROOT)/modules/nrfx/mdk/gcc_startup_nrf52833.S \
   $(SDK_ROOT)/components/libraries/log/src/nrf_log_frontend.c \
   $(SDK_ROOT)/components/libraries/log/src/nrf_log_str_formatter.c \
   $(SDK_ROOT)/components/boards/boards.c \
@@ -67,12 +68,13 @@ OPT = -O3 -g3
 
 # C flags common to all targets
 CFLAGS += $(OPT)
-CFLAGS += -DBOARD_PCA10100
+#CFLAGS += -DBOARD_PCA10100
+CFLAGS += -DCUSTOM_BOARD_INC=microbit_v2
 CFLAGS += -DBSP_DEFINES_ONLY
 CFLAGS += -DCONFIG_GPIO_AS_PINRESET
 CFLAGS += -DDEVELOP_IN_NRF52833
 CFLAGS += -DFLOAT_ABI_SOFT
-CFLAGS += -DNRF52820_XXAA
+CFLAGS += -DNRF52833_XXAA
 CFLAGS += -DNRFX_COREDEP_DELAY_US_LOOP_CYCLES=3
 CFLAGS += -mcpu=cortex-m4
 CFLAGS += -mthumb -mabi=aapcs
@@ -94,7 +96,7 @@ ASMFLAGS += -DBSP_DEFINES_ONLY
 ASMFLAGS += -DCONFIG_GPIO_AS_PINRESET
 ASMFLAGS += -DDEVELOP_IN_NRF52833
 ASMFLAGS += -DFLOAT_ABI_SOFT
-ASMFLAGS += -DNRF52820_XXAA
+ASMFLAGS += -DNRF52833_XXAA
 ASMFLAGS += -DNRFX_COREDEP_DELAY_US_LOOP_CYCLES=3
 
 # Linker flags
@@ -106,10 +108,10 @@ LDFLAGS += -Wl,--gc-sections
 # use newlib in nano version
 LDFLAGS += --specs=nano.specs
 
-nrf52820_xxaa: CFLAGS += -D__HEAP_SIZE=4096
-nrf52820_xxaa: CFLAGS += -D__STACK_SIZE=4096
-nrf52820_xxaa: ASMFLAGS += -D__HEAP_SIZE=4096
-nrf52820_xxaa: ASMFLAGS += -D__STACK_SIZE=4096
+nrf52833_xxaa: CFLAGS += -D__HEAP_SIZE=8192
+nrf52833_xxaa: CFLAGS += -D__STACK_SIZE=8192
+nrf52833_xxaa: ASMFLAGS += -D__HEAP_SIZE=8192
+nrf52833_xxaa: ASMFLAGS += -D__STACK_SIZE=8192
 
 # Add standard libraries at the very end of the linker input, after all objects
 # that may need symbols provided by these libraries.
@@ -119,12 +121,12 @@ LIB_FILES += -lc -lnosys -lm
 .PHONY: default help
 
 # Default target - first one defined
-default: nrf52820_xxaa
+default: nrf52833_xxaa
 
 # Print all targets that can be built
 help:
 	@echo following targets are available:
-	@echo		nrf52820_xxaa
+	@echo		nrf52833_xxaa
 	@echo		sdk_config - starting external tool for editing sdk_config.h
 	@echo		flash      - flashing binary
 
@@ -139,8 +141,8 @@ $(foreach target, $(TARGETS), $(call define_target, $(target)))
 
 # Flash the program
 flash: default
-	@echo Flashing: $(OUTPUT_DIRECTORY)/nrf52820_xxaa.hex
-	nrfjprog -f nrf52 --program $(OUTPUT_DIRECTORY)/nrf52820_xxaa.hex --sectorerase
+	@echo Flashing: $(OUTPUT_DIRECTORY)/nrf52833_xxaa.hex
+	nrfjprog -f nrf52 --program $(OUTPUT_DIRECTORY)/nrf52833_xxaa.hex --sectorerase
 	nrfjprog -f nrf52 --reset
 
 erase:
