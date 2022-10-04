@@ -44,21 +44,37 @@
 extern "C" {
 #endif
 
+#define MICROBIT_V2_BOARD
+
 #include "nrf_gpio.h"
 
 // LEDs definitions for PCA10056
-#define LEDS_NUMBER    4
+#define LEDS_NUMBER    5
 
-#define LED_1          NRF_GPIO_PIN_MAP(0,13)
-#define LED_2          NRF_GPIO_PIN_MAP(0,14)
-#define LED_3          NRF_GPIO_PIN_MAP(0,15)
-#define LED_4          NRF_GPIO_PIN_MAP(0,16)
-#define LED_START      LED_1
-#define LED_STOP       LED_4
+#define LED_COL1       NRF_GPIO_PIN_MAP(0,28)
+#define LED_COL2       NRF_GPIO_PIN_MAP(0,11)
+#define LED_COL3       NRF_GPIO_PIN_MAP(0,31)
+#define LED_COL4       NRF_GPIO_PIN_MAP(1,05)
+#define LED_COL5       NRF_GPIO_PIN_MAP(0,30)
 
-#define LEDS_ACTIVE_STATE 0
+#define LED_ROW1       NRF_GPIO_PIN_MAP(0,21)
+#define LED_ROW2       NRF_GPIO_PIN_MAP(0,22)
+#define LED_ROW3       NRF_GPIO_PIN_MAP(0,15)
+#define LED_ROW4       NRF_GPIO_PIN_MAP(0,24)
+#define LED_ROW5       NRF_GPIO_PIN_MAP(0,19)
 
-#define LEDS_LIST { LED_1, LED_2, LED_3, LED_4 }
+#define LED_1          LED_ROW1
+#define LED_2          LED_ROW2
+#define LED_3          LED_ROW3
+#define LED_4          LED_ROW4
+#define LED_5          LED_ROW5    
+
+//#define LED_START      LED_1
+//#define LED_STOP       LED_4
+
+#define LEDS_ACTIVE_STATE 1
+
+#define LEDS_LIST { LED_1, LED_2, LED_3, LED_4 , LED_5 }
 
 #define LEDS_INV_MASK  LEDS_MASK
 
@@ -84,8 +100,9 @@ extern "C" {
 //#define BSP_BUTTON_2   BUTTON_3
 //#define BSP_BUTTON_3   BUTTON_4
 
-#define RX_PIN_NUMBER  6
-#define TX_PIN_NUMBER  8
+/* connect to interface MCU TX/RX */
+#define RX_PIN_NUMBER  NRF_GPIO_PIN_MAP(0,6)
+#define TX_PIN_NUMBER  NRF_GPIO_PIN_MAP(1,8)
 #define CTS_PIN_NUMBER NRF_UARTE_PSEL_DISCONNECTED
 #define RTS_PIN_NUMBER NRF_UARTE_PSEL_DISCONNECTED
 #define HWFC           true
