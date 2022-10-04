@@ -138,16 +138,16 @@ static void bsp_board_leds_init(void)
 
     #if defined(CUSTOM_BOARD_INC)
      #if defined(MICROBIT_V2_BOARD)
-      nrf_gpio_cfg_output(LED_ROW1);
-      nrf_gpio_cfg_output(LED_ROW2);
-      nrf_gpio_cfg_output(LED_ROW3);
-      nrf_gpio_cfg_output(LED_ROW4);
-      nrf_gpio_cfg_output(LED_ROW5);
-      nrf_gpio_pin_clear(LED_ROW1);
-      nrf_gpio_pin_clear(LED_ROW2);
-      nrf_gpio_pin_clear(LED_ROW3);
-      nrf_gpio_pin_clear(LED_ROW4);
-      nrf_gpio_pin_clear(LED_ROW5);
+      nrf_gpio_cfg_output(LED_COL1);
+      nrf_gpio_cfg_output(LED_COL2);
+      nrf_gpio_cfg_output(LED_COL3);
+      nrf_gpio_cfg_output(LED_COL4);
+      nrf_gpio_cfg_output(LED_COL5);
+      nrf_gpio_pin_clear(LED_COL1);
+      nrf_gpio_pin_clear(LED_COL2);
+      nrf_gpio_pin_clear(LED_COL3);
+      nrf_gpio_pin_clear(LED_COL4);
+      nrf_gpio_pin_clear(LED_COL5);
      #endif
     #endif
     uint32_t i;

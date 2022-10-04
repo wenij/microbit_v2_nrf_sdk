@@ -61,6 +61,7 @@ int main(void)
     /* Configure board. */
     bsp_board_init(BSP_INIT_LEDS);
 
+    //printf("hello....\n");
     /* Toggle LEDs. */
     while (true)
     {
@@ -69,6 +70,7 @@ int main(void)
             bsp_board_led_invert(i);
             nrf_delay_ms(500);
         }
+        //printf("hello....\n");
     }
 }
 

@@ -75,13 +75,15 @@ extern "C" {
 #define LEDS_ACTIVE_STATE 1
 
 #define LEDS_LIST { LED_1, LED_2, LED_3, LED_4 , LED_5 }
+//#define LEDS_LIST { LED_1 }
 
 #define LEDS_INV_MASK  LEDS_MASK
 
-#define BSP_LED_0      13
-#define BSP_LED_1      14
-#define BSP_LED_2      15
-#define BSP_LED_3      16
+#define BSP_LED_0      21
+//#define BSP_LED_1      22
+//#define BSP_LED_2      15
+//#define BSP_LED_3      24
+//#define BSP_LED_4      19
 
 #define BUTTONS_NUMBER 2
 
