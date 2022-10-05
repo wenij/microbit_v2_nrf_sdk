@@ -1,0 +1,12 @@
+Please prepare pyocd, if no, please using 'pip install pyocd' to install it.
+
+I will suggest to use python virtualenv to run it.
+
+1. python3 -m venv venv
+2. source ./venv/bin/activate
+3. pip install pyocd
+
+
+if need to exit the venv, just type 'deactivate'
+
+next time, you just need type 'source ./venv/bin/activate' to run venv again.
