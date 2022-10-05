@@ -2,10 +2,11 @@ PROJECT_NAME     := uart_pca10100
 TARGETS          := nrf52833_xxaa
 OUTPUT_DIRECTORY := _build
 
-SDK_ROOT := ../../../../nrf_sdk/nRF5_SDK_17.1.0_ddde560
+-include ../../../../setup.mk
+
+SDK_ROOT := ../../../../$(NRF_SDK_DIR)
 PROJ_DIR := ../
 
--include ../../../../setup.mk
 $(OUTPUT_DIRECTORY)/nrf52833_xxaa.out: \
   LINKER_SCRIPT  := uart_gcc_nrf52.ld
 
@@ -66,6 +67,8 @@ INC_FOLDERS += \
   $(SDK_ROOT)/modules/nrfx/drivers/include \
   $(SDK_ROOT)/external/fprintf \
   $(SDK_ROOT)/components/libraries/log/src \
+  $(SDK_ROOT)/../../include \
+  $(SDK_ROOT)/../../include/board \
 
 # Libraries common to all targets
 LIB_FILES += \

@@ -84,6 +84,8 @@ INC_FOLDERS += \
   $(SDK_ROOT)/modules/nrfx/drivers/include \
   $(SDK_ROOT)/external/fprintf \
   $(SDK_ROOT)/components/libraries/log/src \
+  $(SDK_ROOT)/../../include \
+  $(SDK_ROOT)/../../include/board \
 
 # Libraries common to all targets
 LIB_FILES += \
