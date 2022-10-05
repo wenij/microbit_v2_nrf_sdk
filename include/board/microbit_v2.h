@@ -79,19 +79,20 @@ extern "C" {
 
 #define LEDS_INV_MASK  LEDS_MASK
 
-#define BSP_LED_0      21
-//#define BSP_LED_1      22
-//#define BSP_LED_2      15
-//#define BSP_LED_3      24
-//#define BSP_LED_4      19
+#define BSP_LED_0      LED_ROW1
+#define BSP_LED_1      LED_ROW1
+#define BSP_LED_2      LED_ROW1
+#define BSP_LED_3      LED_ROW1
+#define BSP_LED_4      LED_ROW1
 
 #define BUTTONS_NUMBER 2
 
-#define BUTTON_1       14
-#define BUTTON_2       23
+#define BUTTON_1        NRF_GPIO_PIN_MAP(0,14)
+#define BUTTON_2        NRF_GPIO_PIN_MAP(0,23)
 //#define BUTTON_3       24
 //#define BUTTON_4       25
-#define BUTTON_PULL    NRF_GPIO_PIN_PULLUP
+//#define BUTTON_PULL    NRF_GPIO_PIN_PULLUP
+#define BUTTON_PULL    NRF_GPIO_PIN_NOPULL
 
 #define BUTTONS_ACTIVE_STATE 0
 
