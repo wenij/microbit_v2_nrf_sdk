@@ -147,11 +147,10 @@ $(foreach target, $(TARGETS), $(call define_target, $(target)))
 # Flash the program
 flash: default
 	@echo Flashing: $(OUTPUT_DIRECTORY)/nrf52833_xxaa.hex
-	nrfjprog -f nrf52 --program $(OUTPUT_DIRECTORY)/nrf52833_xxaa.hex --sectorerase
-	nrfjprog -f nrf52 --reset
+	pyocd flash -t nrf52833 _build/nrf52833_xxaa.hex
 
 erase:
-	nrfjprog -f nrf52 --eraseall
+	pyocd erase -t nrf52833 -c
 
 SDK_CONFIG_FILE := ../config/sdk_config.h
 CMSIS_CONFIG_TOOL := $(SDK_ROOT)/external_tools/cmsisconfig/CMSIS_Configuration_Wizard.jar
