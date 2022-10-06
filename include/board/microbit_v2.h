@@ -80,10 +80,10 @@ extern "C" {
 #define LEDS_INV_MASK  LEDS_MASK
 
 #define BSP_LED_0      LED_ROW1
-#define BSP_LED_1      LED_ROW1
-#define BSP_LED_2      LED_ROW1
-#define BSP_LED_3      LED_ROW1
-#define BSP_LED_4      LED_ROW1
+#define BSP_LED_1      LED_ROW2
+#define BSP_LED_2      LED_ROW3
+#define BSP_LED_3      LED_ROW4
+#define BSP_LED_4      LED_ROW5
 
 #define BUTTONS_NUMBER 2
 
