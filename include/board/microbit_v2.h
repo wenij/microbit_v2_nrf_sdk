@@ -141,9 +141,10 @@ extern "C" {
 #define SER_CONN_CHIP_RESET_PIN     NRF_GPIO_PIN_MAP(1,1)    // Pin used to reset connectivity chip
 #endif
 // Arduino board mappings
+
+#define ARDUINO_SCL_PIN             8    // SCL signal pin
+#define ARDUINO_SDA_PIN             16    // SDA signal pin
 #if 0
-#define ARDUINO_SCL_PIN             27    // SCL signal pin
-#define ARDUINO_SDA_PIN             26    // SDA signal pin
 #define ARDUINO_AREF_PIN            2     // Aref pin
 
 #define ARDUINO_13_PIN              NRF_GPIO_PIN_MAP(0, 23)  // Digital pin 13
