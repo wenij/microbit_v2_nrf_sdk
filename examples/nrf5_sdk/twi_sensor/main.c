@@ -67,7 +67,7 @@
 // porting the demo code from https://github.com/STMicroelectronics/STMems_Standard_C_drivers/tree/master/lsm303agr_STdC/examples
 
 /* comment out this define LSM303_SELF_TEST to deom the polling data from LSM303AGR chip */
-#define LSM303_SELF_TEST
+//#define LSM303_SELF_TEST
 
 
 
@@ -497,7 +497,7 @@ void lsm303agr_read_data_polling(void)
 
     lsm303agr_mag_status_get(&dev_ctx_mg, &reg.status_reg_m);
 
-    if (reg.status_reg_m.zyxda) {
+    if (0/*reg.status_reg_m.zyxda*/) {
       /* Read magnetic field data */
       memset(data_raw_magnetic, 0x00, 3 * sizeof(int16_t));
       lsm303agr_magnetic_raw_get(&dev_ctx_mg, data_raw_magnetic);
@@ -515,7 +515,7 @@ void lsm303agr_read_data_polling(void)
 
     lsm303agr_temp_data_ready_get(&dev_ctx_xl, &reg.byte);
 
-    if (reg.byte) {
+    if (0/*reg.byte*/) {
       /* Read temperature data */
       memset(&data_raw_temperature, 0x00, sizeof(int16_t));
       lsm303agr_temperature_raw_get(&dev_ctx_xl,

@@ -935,12 +935,18 @@ int32_t lsm303agr_acceleration_raw_get(stmdev_ctx_t *ctx,
   int32_t ret;
 
   ret = lsm303agr_read_reg(ctx, LSM303AGR_OUT_X_L_A, buff, 6);
+  #if 0
   val[0] = (int16_t)buff[1];
   val[0] = (val[0] * 256) + (int16_t)buff[0];
   val[1] = (int16_t)buff[3];
   val[1] = (val[1] * 256) + (int16_t)buff[2];
   val[2] = (int16_t)buff[5];
   val[2] = (val[2] * 256) + (int16_t)buff[4];
+  #else
+  val[0] = (int16_t)(((int16_t)buff[1] << 8) | buff[0]) >> 4 ; // 12 bit resolution
+  val[1] = (int16_t)(((int16_t)buff[3] << 8) | buff[2]) >> 4 ; // 12 bit resolution
+  val[2] = (int16_t)(((int16_t)buff[5] << 8) | buff[4]) >> 4 ; // 12 bit resolution
+  #endif
 
   return ret;
 }

@@ -171,6 +171,8 @@ extern "C" {
 #define ARDUINO_A5_PIN              31    // Analog channel 5
 #endif
 
+#define SPEAKER_PIN                 NRF_GPIO_PIN_MAP(0,0)
+
 #ifdef __cplusplus
 }
 #endif
