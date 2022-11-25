@@ -104,8 +104,13 @@ extern "C" {
 //#define BSP_BUTTON_3   BUTTON_4
 
 /* connect to interface MCU TX/RX */
+#if 0 /* pyocd with uart pin */
 #define RX_PIN_NUMBER  NRF_GPIO_PIN_MAP(1,8)
 #define TX_PIN_NUMBER  NRF_GPIO_PIN_MAP(0,6)
+#else /* P12, P13 */
+#define RX_PIN_NUMBER  NRF_GPIO_PIN_MAP(0,12)
+#define TX_PIN_NUMBER  NRF_GPIO_PIN_MAP(0,17)
+#endif
 #define CTS_PIN_NUMBER NRF_UARTE_PSEL_DISCONNECTED
 #define RTS_PIN_NUMBER NRF_UARTE_PSEL_DISCONNECTED
 #define HWFC           true
